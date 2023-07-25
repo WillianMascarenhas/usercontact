@@ -1,6 +1,6 @@
 import { AppError } from "../../Errors/app.error";
 import { AppDataSource } from "../../data-source";
-import { User } from "../../entities/user.entitie";
+import { User } from "../../entities/user.entity";
 import { UserRequest, UserResponse } from "../../interfaces/user.interface";
 import { userSchemasResponse } from "../../schemas/users.schemas";
 
