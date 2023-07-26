@@ -1,7 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken"
 import "dotenv/config"
-import { decode } from "punycode";
 
 export const esureAuthMiddleware = (req:Request, res: Response, next:NextFunction) =>{
     const tokenHeaders = req.headers.authorization
@@ -17,7 +16,7 @@ export const esureAuthMiddleware = (req:Request, res: Response, next:NextFunctio
             return res.status(401).json({message: "invalid credentials"})
             // basicamente é a verificação do token
         }
-        res.locals.userId = decoded.id
+        res.locals.userId = decoded.sub
 
         return next()
     })

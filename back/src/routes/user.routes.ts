@@ -7,4 +7,6 @@ import { loginController } from "../controllers/login.controller";
 export const userRoutes = Router();
 
 userRoutes.post("/users", ensureDataIsValid(userSchemasRequest), createUserController);
+
 userRoutes.post("/login", loginController);
+

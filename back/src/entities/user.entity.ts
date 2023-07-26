@@ -5,7 +5,9 @@ import {
   Column,
   BeforeInsert,
   BeforeUpdate,
+  OneToMany,
 } from "typeorm";
+import { Contact } from "./contact.entity";
 
 @Entity("users")
 export class User {
@@ -21,6 +23,9 @@ export class User {
   phone: string;
   @Column({ readonly: true, default: new Date() })
   createdAt: Date;
+
+  @OneToMany(() => Contact, (contact) => contact.user)
+  contacts: Contact[];
 
   @BeforeInsert()
   @BeforeUpdate()
