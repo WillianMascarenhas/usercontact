@@ -9,5 +9,5 @@ export const contactRoutes = Router();
 
 contactRoutes.post("",ensureDataIsValid(contactSchemasRequest), esureAuthMiddleware, createContactController);
 contactRoutes.get("", esureAuthMiddleware, listContactController);
-contactRoutes.patch("/:id", ensureDataIsValid(contactSchemasUpdate), esureAuthMiddleware, updateContactController);
-contactRoutes.delete("/:id", esureAuthMiddleware,contactOwnerMiddleware, deleteContactController);
+contactRoutes.patch("/:id", ensureDataIsValid(contactSchemasUpdate), esureAuthMiddleware, contactOwnerMiddleware, updateContactController);
+contactRoutes.delete("/:id", esureAuthMiddleware, contactOwnerMiddleware, deleteContactController); 

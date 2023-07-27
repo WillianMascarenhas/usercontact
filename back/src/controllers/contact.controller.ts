@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import { createContactService } from "../services/contact/createContact.service"
-import { retriveSerivce } from "../services/contact/retriveContact.service"
+import { retriveSerivce } from "../services/contact/retrieveContact.service"
 import { updateContactService } from "../services/contact/updateContact.service"
 import { destroyContactService } from "../services/contact/destroyContact.service"
 

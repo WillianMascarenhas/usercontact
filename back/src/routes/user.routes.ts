@@ -1,12 +1,14 @@
 import { Router } from "express";
-import { createUserController } from "../controllers/users.controller";
+import { createUserController, retrieveUserController, updateUserController } from "../controllers/users.controller";
 import { ensureDataIsValid } from "../middlewares/ensureDataIsValid.middleware";
-import { userSchemasRequest } from "../schemas/users.schemas";
-import { loginController } from "../controllers/login.controller";
+import { userSchemasRequest, userSchemasUpdate } from "../schemas/users.schemas";
+import { esureAuthMiddleware } from "../middlewares/ensureAuth.middleware";
+import { contactOwnerMiddleware } from "../middlewares/contactOwner.middleware";
 
 export const userRoutes = Router();
 
-userRoutes.post("/users", ensureDataIsValid(userSchemasRequest), createUserController);
+userRoutes.post("", ensureDataIsValid(userSchemasRequest), createUserController);
+userRoutes.get("", retrieveUserController);
+userRoutes.patch("/:id",ensureDataIsValid(userSchemasUpdate),esureAuthMiddleware, updateUserController);
 
-userRoutes.post("/login", loginController);
 
