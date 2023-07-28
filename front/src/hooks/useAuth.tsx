@@ -1,8 +1,8 @@
-import { useContext } from "react"
-import { LoginContext } from "../providers/loginPorvider"
+import { useContext } from "react";
+import { LoginContext } from "../providers/userProvider";
 
 export const useAuth = () => {
-    const loginContext = useContext(LoginContext)
+  const loginContext = useContext(LoginContext);
 
-    return loginContext
-}
+  return loginContext;
+};

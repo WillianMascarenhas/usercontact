@@ -1,4 +1,4 @@
-import { LoginProvider } from "./providers/loginPorvider";
+import { LoginProvider } from "./providers/userProvider";
 import { RoutesMain } from "./routes";
 import GlobalStyles from "./styles/GlobalStyles";
 

@@ -1,7 +1,6 @@
-// components/pages/Dashboard.tsx
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { useAuth } from "../../hooks/useAuth";
+import { Card } from "../../components/card";
 
 export interface IContact {
   id: number;
@@ -13,23 +12,35 @@ export interface IContact {
 
 export const Dashboard = () => {
   const [contacts, setContacts] = useState<IContact[]>([]);
-  const { loading } = useAuth();
-  
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
   useEffect(() => {
     (async () => {
       const response = await api.get<IContact[]>("/contact");
       setContacts(response.data);
     })();
-  }, [loading]);
+  }, []);
+
+  const toggleModal = () =>{
+    setIsOpenModal(!isOpenModal)
+  }
 
   return (
     <>
-      <h1>Dashbord</h1>
-      <ul>
-        {contacts.map((contact) => (
-          <li key={contact.id}>{contact.fullName}</li>
-        ))}
-      </ul>
+      <header>
+        <div>
+          <div>imagem sei lá</div>
+          <nav>
+            <span>Novo contato</span>
+            <span>Sair</span>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <ul>
+          <Card contacts={contacts} toggleModal={toggleModal} isOpenModal={isOpenModal}/>
+        </ul>
+      </main>
     </>
   );
 };
