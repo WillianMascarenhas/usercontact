@@ -1,7 +1,7 @@
 // components/pages/Dashboard.tsx
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { useLogin } from "../../hooks/useLogin";
+import { useAuth } from "../../hooks/useAuth";
 
 export interface IContact {
   id: number;
@@ -13,7 +13,7 @@ export interface IContact {
 
 export const Dashboard = () => {
   const [contacts, setContacts] = useState<IContact[]>([]);
-  const { loading } = useLogin();
+  const { loading } = useAuth();
   
   useEffect(() => {
     (async () => {

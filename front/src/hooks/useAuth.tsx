@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { LoginContext } from "../providers/loginPorvider"
 
-export const useLogin = () => {
+export const useAuth = () => {
     const loginContext = useContext(LoginContext)
 
     return loginContext

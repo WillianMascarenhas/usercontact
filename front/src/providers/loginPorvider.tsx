@@ -2,15 +2,17 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 import { LoginData } from "../schemas/LoginSchema/validators";
 import { api } from "../services/api";
 import { useNavigate } from "react-router-dom";
+import { RegisterData } from "../schemas/RegisterSchema/validators";
 
-export const LoginContext = createContext({} as LoginValues);
+export const LoginContext = createContext({} as AuthValues);
 
 interface LoginProviderProps {
   children: ReactNode;
 }
 
-interface LoginValues {
+interface AuthValues {
   login: (data: LoginData) => Promise<void>;
+  registerUser: (data: RegisterData) => Promise<void>
   loading: boolean;
 }
 
@@ -49,9 +51,19 @@ export const LoginProvider = ({ children }: LoginProviderProps) => {
     }
   };
 
-  const loginContextValue: LoginValues = {
-    login: login,
+  const registerUser = async (data: RegisterData) =>{
+    try {
+      await api.post("/user", data)
+      Navigate("/")
+    } catch (error){
+      console.log(error)
+    }
+  }
+
+  const loginContextValue: AuthValues = {
     loading: loading,
+    login: login,
+    registerUser: registerUser
   };
 
   return (
