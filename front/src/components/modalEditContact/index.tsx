@@ -1,6 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { UpdateData, UpdateSchema } from "../../schemas/UpadateSchema/validators"
+import { UpdateData, UpdateSchema } from "../../schemas/ContactSchema/validators"
 import { contactAuth } from "../../hooks/contactAuth"
 import { Modal } from "../../components/modal";
 import { IContact } from "../../pages/Dashbord";
@@ -20,6 +20,7 @@ export const ModalEditUser = ({toggleModal, contact}:ModalEditProps) => {
 
     const onSubmitValues =(data:UpdateData) =>{
         updateContact(data,contact.id)
+        toggleModal()
     }
 
     return (
@@ -42,7 +43,7 @@ export const ModalEditUser = ({toggleModal, contact}:ModalEditProps) => {
             <input type="text" id="phone" {...register("phone")} placeholder="Número de telefone" />
             {errors.phone && <span>{errors.phone.message}</span>}
 
-            <button type="submit">Registrar-se</button>
+            <button type="submit">Atualizar contato</button>
             </form>
         </Modal>
         </>

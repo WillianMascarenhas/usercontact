@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Card } from "../../components/card";
+import { ModalCreateUser } from "../../components/modalAddContact";
+import { contactAuth } from "../../hooks/contactAuth";
 
 export interface IContact {
   id: number;
@@ -11,7 +13,7 @@ export interface IContact {
 }
 
 export const Dashboard = () => {
-  const [contacts, setContacts] = useState<IContact[]>([]);
+ const { setContacts, contacts, test } = contactAuth()
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   useEffect(() => {
@@ -19,7 +21,7 @@ export const Dashboard = () => {
       const response = await api.get<IContact[]>("/contact");
       setContacts(response.data);
     })();
-  }, []);
+  }, [test]);
 
   const toggleModal = () =>{
     setIsOpenModal(!isOpenModal)
@@ -31,9 +33,13 @@ export const Dashboard = () => {
         <div>
           <div>imagem sei lá</div>
           <nav>
-            <span>Novo contato</span>
-            <span>Sair</span>
+            <button onClick={()=>toggleModal()}>Novo contato</button>
+            <button>Sair</button>
           </nav>
+          {
+          isOpenModal && 
+          (<ModalCreateUser toggleModal={toggleModal} />)
+      }
         </div>
       </header>
       <main>

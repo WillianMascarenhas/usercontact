@@ -14,7 +14,6 @@ export const Register = () => {
   return (
     <>
       <main>
-        <h2>Registrar</h2>
         <form onSubmit={handleSubmit(registerUser)}>
           <label htmlFor="fullName">Nome completo</label>
           <input type="text" id="fullName" {...register("fullName")} placeholder="Nome completo" />

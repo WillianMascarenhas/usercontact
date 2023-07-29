@@ -12,36 +12,23 @@ export const Modal = ({ children, toggleModal }: ModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Função que é chamada quando ocorre um clique no documento (fora do modal)
-    const handleClick = (e: MouseEvent) => {
-      //   console.log("Evento de clique detectado");
-
-      // Verifica se a referência 'ref' é válida e não está nula
+    const handleClick = (event: MouseEvent) => {
       if (!ref.current) {
-        // console.log("Ref atual é nula ou não foi definida.");
-        return; // Se não estiver definida, sai da função
+        return;
       }
 
-      // Verifica se o evento 'target' (elemento clicado) não é nulo
-      if (!e.target) {
-        // console.log("Elemento clicado é nulo.");
-        return; // Se o elemento clicado for nulo, sai da função
+      if (!event.target) {
+        return;
       }
 
-      // Verifica se o elemento clicado está dentro do elemento referenciado por 'ref'
-      if (ref.current.contains(e.target as HTMLElement)) {
-        // console.log("Clique dentro do modal, não fecha.");
-        return; // Se sim, não faz nada, pois o clique foi dentro do modal
+      const clickedElement = event.target as HTMLElement;
+      if (!ref.current.contains(clickedElement) && !clickedElement.closest('.modal-content')) {
+        toggleModal();
       }
-
-      //   console.log("Clique fora do modal, fechando o modal...");
-      toggleModal(); // Se não, chama a função 'toggleModal' para fechar o modal
     };
 
-    // Adiciona um ouvinte de evento de clique ao objeto 'window'
     window.addEventListener("mousedown", handleClick);
 
-    // Função de limpeza que é executada quando o componente é desmontado
     return () => {
       window.removeEventListener("mousedown", handleClick);
     };
@@ -49,7 +36,10 @@ export const Modal = ({ children, toggleModal }: ModalProps) => {
 
   return (
     <Container>
-      <div ref={ref}>{children}</div>
+      <div ref={ref} className="modal-content">
+        {children}
+      </div>
     </Container>
   );
 };
+
