@@ -5,7 +5,6 @@
 ### Features
 - [x] CRUD complete de contatos (cadastrar, listar, atulizar e deletar)
 - [x] Criação de Usuário, o seu login
-- [ ] 
 ## Endpoints:
 <br/>
 
