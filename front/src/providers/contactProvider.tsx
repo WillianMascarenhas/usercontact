@@ -1,7 +1,7 @@
 import { ReactNode, createContext, useState } from "react";
 import { api } from "../services/api";
 import { CreateContactData, UpdateData } from "../schemas/ContactSchema/validators";
-import { IContact, IContactTest } from "../pages/Dashbord";
+import { IContact } from "../pages/Dashbord";
 
 interface ContactValues {
     updateContact: (data: UpdateData, contactId: number) => Promise<void>

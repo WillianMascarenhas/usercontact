@@ -29,6 +29,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: rgb(144 144 144);
+	overflow-x: hidden;
 }
 ol, ul {
 	list-style: none;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { contactAuth } from "../../hooks/contactAuth";
 import { IContact } from "../../pages/Dashbord";
 import { ModalEditUser } from "../modalEditContact";
+import { StyledCard } from "./style";
 
 interface CardProps {
   contacts: IContact[];
@@ -24,13 +25,19 @@ export const Card = ({ contacts, toggleModal, isOpenModal }: CardProps) => {
       {contacts
         .sort((a, b) => a.id - b.id)
         .map((contact) => (
-          <li key={contact.id}>
+          <StyledCard key={contact.id}>
             <h2>{contact.fullName}</h2>
-            <div>
-              <span>Email: {contact.email}</span>
-              <span>Telefone: {contact.phone}</span>
+            <div className="info_contact">
+              <div className="tags">
+                <span className="tag_name">Email:</span>
+                <span>{contact.email}</span>
+              </div>
+              <div className="tags">
+                <span className="tag_name">Telefone:</span>
+                <span>{contact.phone}</span>
+              </div>
             </div>
-            <div>
+            <div className="container_buttons">
               <button
                 onClick={() => {
                   toggleModal();
@@ -39,13 +46,11 @@ export const Card = ({ contacts, toggleModal, isOpenModal }: CardProps) => {
               >
                 Editar
               </button>
-              <button
-                onClick={() => handleDeleteContact(contact.id)} 
-              >
+              <button onClick={() => handleDeleteContact(contact.id)}>
                 Excluir contato
               </button>
             </div>
-          </li>
+          </StyledCard>
         ))}
       {isOpenModal && contact && (
         <ModalEditUser toggleModal={toggleModal} contact={contact} />
