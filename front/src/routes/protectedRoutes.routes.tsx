@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { Container } from "../components/modal/style";
 
 export const ProtectedRoutes = () => {
   const { loading } = useAuth();
@@ -14,9 +15,11 @@ export const ProtectedRoutes = () => {
   }, []);
   if (loading) {
     return (
-      <div>
-        <span>Carregando a página</span>
-      </div>
+      <Container>
+        <div className="modal-content">
+          <span>Carregando a página</span>
+        </div>
+      </Container>
     );
   }
   return <Outlet />;
