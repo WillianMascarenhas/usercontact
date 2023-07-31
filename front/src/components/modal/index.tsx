@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Container } from "./style";
 import { useRef, useEffect } from "react";
+import { contactAuth } from "../../hooks/contactAuth";
 
 interface ModalProps {
   toggleModal: () => void;
@@ -10,7 +11,7 @@ interface ModalProps {
 
 export const Modal = ({ children, toggleModal }: ModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
-
+  const { setNewUser } = contactAuth();
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if (!ref.current) {
@@ -22,8 +23,12 @@ export const Modal = ({ children, toggleModal }: ModalProps) => {
       }
 
       const clickedElement = event.target as HTMLElement;
-      if (!ref.current.contains(clickedElement) && !clickedElement.closest('.modal-content')) {
+      if (
+        !ref.current.contains(clickedElement) &&
+        !clickedElement.closest(".modal-content")
+      ) {
         toggleModal();
+        setNewUser(false);
       }
     };
 
@@ -42,4 +47,3 @@ export const Modal = ({ children, toggleModal }: ModalProps) => {
     </Container>
   );
 };
-

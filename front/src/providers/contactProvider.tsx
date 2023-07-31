@@ -11,6 +11,8 @@ interface ContactValues {
     contacts: IContact[]
     setTest: React.Dispatch<React.SetStateAction<number>>
     test: number
+    setNewUser: React.Dispatch<React.SetStateAction<boolean>>
+    newUser: boolean
 }
 
 interface ContactProviderProps {
@@ -63,6 +65,9 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
   const [contacts, setContacts] = useState<IContact[]>([]);
   const [test, setTest] = useState(Number);
 
+  const [newUser, setNewUser] = useState<boolean>(false);
+
+
   const ContactContextValues: ContactValues = {
     updateContact: updateContact,
     registerContact: registerContact,
@@ -70,7 +75,9 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
     setContacts: setContacts,
     contacts: contacts,
     test: test,
-    setTest: setTest
+    setTest: setTest,
+    setNewUser,
+    newUser
   };
 
   return (

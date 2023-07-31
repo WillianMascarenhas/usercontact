@@ -30,13 +30,21 @@ export const Dashboard = () => {
     setIsOpenModal(!isOpenModal);
   };
 
+  const {setNewUser, newUser} = contactAuth()
   return (
     <>
       <StyledHeader>
         <div className="conatiner_header">
-          <div>imagem sei lá</div>
+          <div>Logo Do site</div>
           <nav>
-            <button onClick={() => toggleModal()}>Novo contato</button>
+            <button
+              onClick={() => {
+                toggleModal();
+                setNewUser(true);
+              }}
+            >
+              Novo contato
+            </button>
             <button
               onClick={() => {
                 localStorage.removeItem("@UserContact:Token");
@@ -46,7 +54,7 @@ export const Dashboard = () => {
               Sair
             </button>
           </nav>
-          {isOpenModal && <ModalCreateUser toggleModal={toggleModal} />}
+          {isOpenModal && newUser && <ModalCreateUser toggleModal={toggleModal} />}
         </div>
       </StyledHeader>
       <StyledMain>

@@ -11,8 +11,9 @@ interface CardProps {
 }
 
 export const Card = ({ contacts, toggleModal, isOpenModal }: CardProps) => {
-  // const [contactId, setContactId] = useState<number | null>(null);
   const [contact, setContact] = useState<IContact | null>(null);
+
+  const {newUser} = contactAuth()
 
   const { dellContact } = contactAuth();
 
@@ -52,7 +53,7 @@ export const Card = ({ contacts, toggleModal, isOpenModal }: CardProps) => {
             </div>
           </StyledCard>
         ))}
-      {isOpenModal && contact && (
+      {isOpenModal && !newUser && contact && (
         <ModalEditUser toggleModal={toggleModal} contact={contact} />
       )}
     </>
