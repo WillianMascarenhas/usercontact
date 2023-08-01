@@ -38,7 +38,7 @@ onde é possível listar as informações,atualizar  ou acrescentar e excluir um
 ### Para realizar o login:
 
 {<br/>
-  "email":"niko@mail.com",<br/>
+  "email":"user@mail.com",<br/>
   "password":"1234"<br/>
 }<br/>
 
@@ -49,5 +49,10 @@ onde é possível listar as informações,atualizar  ou acrescentar e excluir um
 |PATCH | /contact/:id                    | Atualiza o contato                                                  | Usuário dono da conta ques esteja logado, necessita do token de autenticação |
 | DELETE | /contact/:id/                 |Exclui uma contaro                                   | Usuário dono da conta ques esteja logado, necessita do token de autenticação |                 |
 
+### Para realizar o cadastro de um novo contato:
 
-
+{<br/>
+  "full_name":"UserName",<br/>
+  "email":"user@mail.com",<br/>
+  "fone":"11999999999",<br/>
+}<br/>
