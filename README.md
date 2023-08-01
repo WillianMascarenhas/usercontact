@@ -27,7 +27,7 @@ onde é possível listar as informações,atualizar  ou acrescentar e excluir um
 | PATCH | /user/:id/ | Atualiza parcialmente informações de  um usuário |  Apenas o dono da conta, necessita do token de autenticação |
 | DELETE | /user/:id/                 |exclui uma conta                                   | Apenas o dono da conta, necessita do token de autenticação |                 |
 ###Para realizar o cadastro:
-  {<br/>
+  <br/>{
 	"full_name":"UserName",<br/>
   "email":"user@mail.com",<br/>
   "fone":"11999999999",<br/>
@@ -35,7 +35,8 @@ onde é possível listar as informações,atualizar  ou acrescentar e excluir um
 }<br/>
 
 ###Para realizar o login:
-{
+
+<br/>{
   "email":"niko@mail.com",<br/>
   "password":"1234"<br/>
 }
