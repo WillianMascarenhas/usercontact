@@ -25,18 +25,21 @@ onde é possível listar as informações,atualizar  ou acrescentar e excluir um
 | POST   | /user                     | Criação de usuário                                | Qualquer usuário, não necessita token  |
 | GET    | /user                   | Lista todos os usuários                           | Qualquer usuário, não necessita token                  |
 | PATCH | /user/:id/ | Atualiza parcialmente informações de  um usuário |  Apenas o dono da conta, necessita do token de autenticação |
-| DELETE | /user/:id/                 |exclui uma conta                                   | Apenas o dono da conta, necessita do token de autenticação |              <br/>
-###Para realizar o cadastro:
-  <br/>{
-	"full_name":"UserName",<br/>
+| DELETE | /user/:id/                 |exclui uma conta                                   | Apenas o dono da conta, necessita do token de autenticação |            
+
+### Para realizar o cadastro:
+  <br/>
+{
+  "full_name":"UserName",<br/>
   "email":"user@mail.com",<br/>
   "fone":"11999999999",<br/>
   "password":"1234"<br/>
 }<br/>
 
-###Para realizar o login:
+### Para realizar o login:
 
-<br/>{
+<br/>
+{
   "email":"niko@mail.com",<br/>
   "password":"1234"<br/>
 }
