@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { createUserService } from "../services/user/createUser.service";
-import { listaUserService } from "../services/user/retrieveUser.service";
+import { listaUserService, retiveUserService } from "../services/user/retrieveUser.service";
 import { updateUserService } from "../services/user/updateUser.service";
 import { destroyUserSerice } from "../services/user/destroyUser.service";
 
@@ -14,6 +14,12 @@ export const retrieveUserController = async (req: Request, res: Response) => {
     const listUser = await listaUserService()
 
     return res.json(listUser)
+};
+export const retrieveUserByIdController = async (req: Request, res: Response) => {
+  const userId = parseInt(res.locals.userId)
+  const retiveUser = await retiveUserService(userId)
+
+  return res.json(retiveUser)
 };
 export const updateUserController = async (req: Request, res: Response) => {
   const userId = parseInt(req.params.id)
