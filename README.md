@@ -91,7 +91,7 @@ O servidor backend será iniciado na porta 3000.
   "password":"1234"<br/>
 }<br/>
 
-####Todas as rotas necessitam de token de autenticação
+#### Obs. Todas as rotas necessitam de token de autenticação
 | Método | Endpoint                   | Responsabilidade                                  | Autenticação                           |
 | ------ | -------------------------- | ------------------------------------------------- | -------------------------------------- |
 |GET | /contact                     |  Lista todos os contatos cadastrados                         | Usuário dono da conta ques esteja logado, necessita do token de autenticação |
