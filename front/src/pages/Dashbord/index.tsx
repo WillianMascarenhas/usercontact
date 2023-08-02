@@ -5,6 +5,9 @@ import { ModalCreateUser } from "../../components/modalAddContact";
 import { contactAuth } from "../../hooks/contactAuth";
 import { useNavigate } from "react-router-dom";
 import { StyledHeader, StyledMain } from "./style";
+import { useAuth } from "../../hooks/useAuth";
+import { UserResponse } from "../../schemas/RegisterSchema/validators";
+import { ModalEditUserOwner } from "../../components/modalEditUser";
 
 export interface IContact {
   id: number;
@@ -16,8 +19,12 @@ export interface IContact {
 
 export const Dashboard = () => {
   const Navigate = useNavigate();
-  const { setContacts, contacts, test } = contactAuth();
+  const { setContacts, contacts, test, setNewUser, newUser } = contactAuth();
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+
+  const { owner,deleteUser, editUser, setEditUser } = useAuth();
+
+  const userOwner: UserResponse = owner.data;
 
   useEffect(() => {
     (async () => {
@@ -29,8 +36,6 @@ export const Dashboard = () => {
   const toggleModal = () => {
     setIsOpenModal(!isOpenModal);
   };
-
-  const {setNewUser, newUser} = contactAuth()
   return (
     <>
       <StyledHeader>
@@ -54,17 +59,35 @@ export const Dashboard = () => {
               Sair
             </button>
           </nav>
-          {isOpenModal && newUser && <ModalCreateUser toggleModal={toggleModal} />}
+          {isOpenModal && newUser && !editUser &&(
+            <ModalCreateUser toggleModal={toggleModal} />
+          )}
+          {isOpenModal && editUser &&(
+            <ModalEditUserOwner toggleModal={toggleModal} userOwner={userOwner}/>
+          )}
         </div>
       </StyledHeader>
       <StyledMain>
-        <ul>
-          <Card
-            contacts={contacts}
-            toggleModal={toggleModal}
-            isOpenModal={isOpenModal}
-          />
-        </ul>
+        <div className="container">
+          <ul>
+            <Card
+              contacts={contacts}
+              toggleModal={toggleModal}
+              isOpenModal={isOpenModal}
+            />
+          </ul>
+          <div className="container_userOwner">
+            <span>{userOwner.fullName[0]}</span>
+            <h1>{userOwner.fullName}</h1>
+            <div>
+              <button onClick={() => {
+                toggleModal()
+                setEditUser(true)
+              }}>Editar perfil</button>
+              <button onClick={() => deleteUser(userOwner.id) }>excluir perfil</button>
+            </div>
+          </div>
+        </div>
       </StyledMain>
     </>
   );

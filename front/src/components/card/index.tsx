@@ -3,6 +3,7 @@ import { contactAuth } from "../../hooks/contactAuth";
 import { IContact } from "../../pages/Dashbord";
 import { ModalEditUser } from "../modalEditContact";
 import { StyledCard } from "./style";
+import { useAuth } from "../../hooks/useAuth";
 
 interface CardProps {
   contacts: IContact[];
@@ -14,6 +15,7 @@ export const Card = ({ contacts, toggleModal, isOpenModal }: CardProps) => {
   const [contact, setContact] = useState<IContact | null>(null);
 
   const {newUser} = contactAuth()
+  const { editUser } = useAuth();
 
   const { dellContact } = contactAuth();
 
@@ -53,7 +55,7 @@ export const Card = ({ contacts, toggleModal, isOpenModal }: CardProps) => {
             </div>
           </StyledCard>
         ))}
-      {isOpenModal && !newUser && contact && (
+      {isOpenModal && !newUser &&  !editUser && contact && (
         <ModalEditUser toggleModal={toggleModal} contact={contact} />
       )}
     </>

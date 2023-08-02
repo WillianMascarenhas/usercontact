@@ -33,7 +33,6 @@ export const ContactProvider = ({ children }: ContactProviderProps) => {
     };
 
     const dellContact = async (contactId:number) =>{
-        console.log(contactId)
         try{
           await api.delete(`/contact/${contactId}`);
           setTest(test+1)
