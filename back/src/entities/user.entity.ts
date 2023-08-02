@@ -24,7 +24,7 @@ export class User {
   @Column({ readonly: true, default: new Date() })
   createdAt: Date;
 
-  @OneToMany(() => Contact, (contact) => contact.user)
+  @OneToMany(() => Contact, (contact) => contact.user, { onDelete: "CASCADE" })
   contacts: Contact[];
 
   @BeforeInsert()
