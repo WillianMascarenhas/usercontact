@@ -20,6 +20,7 @@ export const ModalEditUserOwner = ({ toggleModal, userOwner }: ModalCreateProps)
 
   const onSubmitValues = (data: UserUpdate) => {
     updateUser(data, userOwner.id);
+    toggleModal();
   };
   return (
     <>
