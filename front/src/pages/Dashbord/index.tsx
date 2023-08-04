@@ -62,7 +62,7 @@ export const Dashboard = () => {
           {isOpenModal && newUser && !editUser &&(
             <ModalCreateUser toggleModal={toggleModal} />
           )}
-          {isOpenModal && editUser &&(
+          {isOpenModal && editUser && !newUser &&(
             <ModalEditUserOwner toggleModal={toggleModal} userOwner={userOwner}/>
           )}
         </div>

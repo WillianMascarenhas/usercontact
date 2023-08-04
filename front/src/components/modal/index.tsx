@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { Container } from "./style";
 import { useRef, useEffect } from "react";
 import { contactAuth } from "../../hooks/contactAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 interface ModalProps {
   toggleModal: () => void;
@@ -12,6 +13,7 @@ interface ModalProps {
 export const Modal = ({ children, toggleModal }: ModalProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const { setNewUser } = contactAuth();
+  const { setEditUser } = useAuth();
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
       if (!ref.current) {
@@ -29,6 +31,7 @@ export const Modal = ({ children, toggleModal }: ModalProps) => {
       ) {
         toggleModal();
         setNewUser(false);
+        setEditUser(false)
       }
     };
 
