@@ -1,7 +1,7 @@
 # Api Contact
 
 Este projeto tem como objetivo ,criar uma agenda para organizar os contatos,<br/>
-onde é possível listar as informações,atualizar  ou acrescentar e excluir um ou mais dados.
+onde é possível listar as informações,atualizar e excluir dados.
 
 ### Tecnologias utilizadas:
 - Node.js
@@ -11,12 +11,12 @@ onde é possível listar as informações,atualizar  ou acrescentar e excluir um
 - React 
 
 ### Requisitos:
--  Node.js instalado (versão 12 ou superior)
--  PostgreSQL instalado e rodando
+-  Node.js instalado 
+-  PostgreSQL instalado 
 
 ### Configuração do banco de dados
 Antes de executar a aplicação, você precisa configurar o banco de dados PostgreSQL. Certifique-se de ter criado um arquivo .env  
- na raiz do projeto e atualize as informações de conexão substituindo as variáveis de ambientes de acordo com  o arquivo .env.example.
+ na raiz do projeto e atualize as informações de conexão com os seus dados necessarios substituindo as variáveis de ambientes de acordo com o arquivo .env.example.
 
 ## Rodando a aplicação
 
@@ -64,8 +64,8 @@ O servidor backend será iniciado na porta 3000.
 - Então você será direcionado para a página da aplicação
 
 ### Features
-- [x] CRUD complete de contatos (cadastrar, listar, atulizar e deletar)
 - [x] Criação de Usuário, o seu login
+- [x] CRUD completo de contatos (cadastrar, listar, atulizar e deletar)
 ## Endpoints:
 <br/>
 
