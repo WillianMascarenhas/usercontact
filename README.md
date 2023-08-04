@@ -45,7 +45,11 @@ do backend:
 ```
 O servidor backend será iniciado na porta 3000.
 - Se preferir é possível ter acesso as requisições por um cliente HTTP de sua escolha, como o Insomnia ou Postman
-
+- Ir na pasta .env, adicionar usas variaves de ambiente
+- E roda o seguinte comando no terminal
+```bash
+  npm run typeorm migration:run -- -d src/data-source
+```
 
 #### frontend
 - na pasta do frontend, execute o seguinte comando:
